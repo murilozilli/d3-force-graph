@@ -41,9 +41,12 @@ function graph(json, json_ignore){
 
     var color = d3.scaleOrdinal(d3.schemeCategory20);
 
+    var forceManyBody = d3.forceManyBody();
+    forceManyBody.strength(-10);//makes nodes more close
+
     var simulation = d3.forceSimulation()
+        .force("charge", forceManyBody)
         .force("link", d3.forceLink().id(function(d) { return d.id; }))
-        .force("charge", d3.forceManyBody())
         .force("center", d3.forceCenter(width / 2, height / 2));
 
     var link = svg.append("g")
@@ -108,4 +111,4 @@ function graph(json, json_ignore){
 
 }
 
-graph(contexto2);
+graph(contexto3);
