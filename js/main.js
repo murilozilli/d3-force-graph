@@ -1,3 +1,6 @@
+
+graph(contexto3);
+
 function graph(json, json_ignore){
 
     if (!json_ignore) {
@@ -110,5 +113,3 @@ function graph(json, json_ignore){
     }
 
 }
-
-graph(contexto3);
