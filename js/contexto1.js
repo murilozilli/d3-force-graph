@@ -1,4 +1,4 @@
-{
+var contexto1 = {
 "nodes": [
 {
 "source": {
@@ -543,4 +543,4 @@
 "size": 7,
 "defaultNodeWeight": 1,
 "defaultEdgeWeight": 1
-}
+};
