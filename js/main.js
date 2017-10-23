@@ -34,8 +34,7 @@ function graph(json, json_ignore){
             "nodes" : newNodes,
             "links": newEdges
         };
-        console.log(graph);
-        debugger;
+        // debugger;
     }
 
     var svg = d3.select("svg"),
@@ -47,6 +46,20 @@ function graph(json, json_ignore){
     var forceManyBody = d3.forceManyBody();
     forceManyBody.strength(-10);//makes nodes more close
 
+    svg.append('defs').append('marker')
+        .attrs({'id':'arrowhead',
+            'viewBox':'-0 -5 10 10',
+            'refX':13,
+            'refY':0,
+            'orient':'auto',
+            'markerWidth':13,
+            'markerHeight':13,
+            'xoverflow':'visible'})
+        .append('svg:path')
+        .attr('d', 'M 0,-5 L 10 ,0 L 0,5')
+        .attr('fill', '#999')
+        .style('stroke','none');
+
     var simulation = d3.forceSimulation()
         .force("charge", forceManyBody)
         .force("link", d3.forceLink().id(function(d) { return d.id; }))
@@ -57,6 +70,7 @@ function graph(json, json_ignore){
         .selectAll("line")
         .data(graph.links)
         .enter().append("line")
+        .attr('marker-end','url(#arrowhead)')
         .attr("stroke-width", function(d) { return Math.sqrt(d.weight); });
 
     var node = svg.append("g")
