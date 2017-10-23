@@ -5,3 +5,4 @@
 *.iws
 workspace.xml
 tasks.xml
+contexto*.js
